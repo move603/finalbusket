@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMCA Removal Request - Movie Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/css/intlTelInput.css">
+    <style>
+        :root {
+            --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --primary-color: #667eea;
+            --primary-dark: #5a67d8;
+            --danger: #e74c3c;
+            --danger-dark: #c0392b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --gray: #f5f5f5;
+            --dark-gray: #1f2937;
+            --border: #e5e7eb;
+            --shadow: 0 10px 25px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Floating Background Shapes */
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(30px) rotate(240deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Open Modal Button */
+        .open-modal-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .open-modal-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .open-modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .open-modal-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: var(--primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6b7280;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .close-modal:hover {
+            background: #f3f4f6;
+            color: var(--dark-gray);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .form-container {
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        .label-icon {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .required::after {
+            content: " *";
+            color: var(--danger);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-control.error {
+            border-color: var(--danger);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* International Phone Input */
+        .iti {
+            width: 100%;
+        }
+
+        .iti__flag-container {
+            border-radius: 10px 0 0 10px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+
+        .checkbox-group:hover {
+            background: #f1f5f9;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-color);
+        }
+
+        .checkbox-label {
+            flex: 1;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--dark-gray);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .radio-option:hover {
+            background: #f1f5f9;
+        }
+
+        .radio-option input[type="radio"] {
+            margin: 0;
+            accent-color: var(--primary-color);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .form-section:hover {
+            background: rgba(102, 126, 234, 0.02);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-left: -1rem;
+            margin-right: -1rem;
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .note i {
+            color: var(--warning);
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .error-message i {
+            font-size: 0.8rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-submit {
+            width: 100%;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-submit:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-submit .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .legal-text {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .success-message {
+            display: none;
+            background: var(--success);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1rem;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Thank You Modal */
+        .thank-you-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .thank-you-modal.show {
+            display: flex;
+        }
+
+        .thank-you-content {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 500px;
+            animation: successAnimation 0.5s ease;
+        }
+
+        @keyframes successAnimation {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 1.5rem;
+        }
+
+        .thank-you-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .thank-you-message {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .redirect-timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .timer-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+
+        .toast.success .toast-icon {
+            color: var(--success);
+        }
+
+        .toast.error .toast-icon {
+            color: var(--danger);
+        }
+
+        .toast-message {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: white;
+        }
+
+        .toast-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Footer Link Styles */
+        .footer-link {
+            background: none;
+            border: none;
+            color: #e5e7eb;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: left;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .footer-link i {
+            color: var(--primary-color);
+            width: 16px;
+        }
+
+        /* FAQ Styles */
+        .faq-content {
+            max-width: none;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .faq-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-item h3 i {
+            font-size: 1rem;
+        }
+
+        .faq-item p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* DMCA Notice Styles */
+        .dmca-notice-content h3 {
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .dmca-notice-content h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .dmca-notice-content p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .dmca-notice-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .dmca-notice-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                max-height: calc(100vh - 2rem);
+            }
+
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .open-modal-btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 2rem 0 1rem;
+            }
+
+            footer .container {
+                padding: 0 1rem;
+            }
+
+            footer div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape" style="width: 300px; height: 300px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="shape" style="width: 200px; height: 200px; top: 60%; right: 10%; animation-delay: 5s;"></div>
+        <div class="shape" style="width: 150px; height: 150px; bottom: 10%; left: 50%; animation-delay: 10s;"></div>
+    </div>
+
+    <div class="container">
+        <!-- Open Modal Button Section -->
+        <div class="open-modal-section">
+            <button class="open-modal-btn" id="openModalBtn">
+                <i class="fas fa-gavel"></i>
+                File DMCA Takedown Request
+            </button>
+            <p style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;">
+                Click the button above to submit a Digital Millennium Copyright Act (DMCA) removal request for copyrighted content on our website.
+            </p>
+        </div>
+    </div>
+
+    <!-- DMCA Modal -->
+    <div class="modal" id="dmcaModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-shield-alt"></i>
+                    DMCA Takedown Request
+                </h2>
+                <button class="close-modal" id="closeModalBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-container">
+                    <form name="dmca-removal" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="dmcaForm">
+                        <input type="hidden" name="form-name" value="dmca-removal">
+                        <div style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                        </div>
+
+                        <!-- Contact Information Section -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-user"></i>
+                                Contact Information
+                            </h2>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName" class="required">
+                                        <i class="fas fa-user label-icon"></i>
+                                        Full Name
+                                    </label>
+                                    <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full legal name" required>
+                                    <div class="error-message" id="fullNameError">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        Please enter your full name
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="required">
+                                        <i class="fas fa-envelope label-icon"></i>
+                                        Email Address
+                                    </label>
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                                    <div class="error-message" id="emailError">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        Please enter a valid email address
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">
+                                        <i class="fas fa-phone label-icon"></i>
+                                        Phone Number
+                                    </label>
+                                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="International format supported">
+                                    <div class="note">
+                                        <i class="fas fa-info-circle"></i>
+                                        Optional, but recommended for urgent matters
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address">
+                                        <i class="fas fa-map-marker-alt label-icon"></i>
+                                        Address
+                                    </label>
+                                    <textarea id="address" name="address" class="form-control" placeholder="Your physical address (optional)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Copyright Information Section -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-copyright"></i>
+                                Copyright Information
+                            </h2>
+
+                            <div class="form-group">
+                                <label for="copyrightOwner" class="required">
+                                    <i class="fas fa-building label-icon"></i>
+                                    Copyright Owner
+                                </label>
+                                <input type="text" id="copyrightOwner" name="copyrightOwner" class="form-control" placeholder="Name of the copyright holder or company" required>
+                                <div class="error-message" id="copyrightOwnerError">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    Please enter the copyright owner's name
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="copyrightedWork" class="required">
+                                    <i class="fas fa-file-alt label-icon"></i>
+                                    Description of Copyrighted Work
+                                </label>
+                                <textarea id="copyrightedWork" name="copyrightedWork" class="form-control" placeholder="Detailed description of the copyrighted material (movie title, episode, etc.)" required></textarea>
+                                <div class="error-message" id="copyrightedWorkError">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    Please describe the copyrighted work
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="originalLocation" class="required">
+                                    <i class="fas fa-globe label-icon"></i>
+                                    Original Location of Copyrighted Work
+                                </label>
+                                <input type="text" id="originalLocation" name="originalLocation" class="form-control" placeholder="e.g., Official movie website, streaming service, etc." required>
+                                <div class="error-message" id="originalLocationError">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    Please provide the original location of the copyrighted work
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Infringing Content Section -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Infringing Content
+                            </h2>
+
+                            <div class="form-group">
+                                <label for="infringingUrls" class="required">
+                                    <i class="fas fa-link label-icon"></i>
+                                    URL(s) of Infringing Content
+                                </label>
+                                <textarea id="infringingUrls" name="infringingUrls" class="form-control" placeholder="Please provide the exact URLs where the infringing content appears on our website" required></textarea>
+                                <div class="error-message" id="infringingUrlsError">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    Please provide at least one URL of the infringing content
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    <i class="fas fa-question-circle label-icon"></i>
+                                    Are you providing a link from our movie website?
+                                </label>
+                                <div class="radio-group">
+                                    <div class="radio-option">
+                                        <input type="radio" id="linkYes" name="providingLink" value="yes">
+                                        <label for="linkYes">Yes, I'm providing a link from your movie website</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="linkNo" name="providingLink" value="no" checked>
+                                        <label for="linkNo">No, I'm providing a different link</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="realMovieLinkContainer" style="display: none;">
+                                <label for="realMovieLink">
+                                    <i class="fas fa-exchange-alt label-icon"></i>
+                                    Real Movie Link (to replace with)
+                                </label>
+                                <input type="text" id="realMovieLink" name="realMovieLink" class="form-control" placeholder="https://...">
+                                <div class="note">
+                                    <i class="fas fa-info-circle"></i>
+                                    If you'd like us to replace the infringing link with a legitimate source, please provide it here.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Legal Statements Section -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-gavel"></i>
+                                Legal Statements
+                            </h2>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="goodFaith" name="goodFaith" required>
+                                <label for="goodFaith" class="checkbox-label required">
+                                    I have a good faith belief that the use of the copyrighted material described above is not authorized by the copyright owner, its agent, or the law. (DMCA § 512(c)(3)(A)(v))
+                                </label>
+                            </div>
+                            <div class="error-message" id="goodFaithError">
+                                <i class="fas fa-exclamation-circle"></i>
+                                You must confirm this statement
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="accurateInfo" name="accurateInfo" required>
+                                <label for="accurateInfo" class="checkbox-label required">
+                                    The information in this notification is accurate, and under penalty of perjury, I am authorized to act on behalf of the owner of an exclusive right that is allegedly infringed. I understand that false claims may result in legal liability. (DMCA § 512(c)(3)(A)(vi))
+                                </label>
+                            </div>
+                            <div class="error-message" id="accurateInfoError">
+                                <i class="fas fa-exclamation-circle"></i>
+                                You must confirm this statement
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="understandPerjury" name="understandPerjury" required>
+                                <label for="understandPerjury" class="checkbox-label required">
+                                    I understand that knowingly making a false claim may result in legal penalties, including but not limited to monetary damages, court costs, and attorney's fees. I acknowledge that this is a legal document and my electronic signature is binding.
+                                </label>
+                            </div>
+                            <div class="error-message" id="understandPerjuryError">
+                                <i class="fas fa-exclamation-circle"></i>
+                                You must confirm this statement
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="acknowledgeTimeline" name="acknowledgeTimeline" required>
+                                <label for="acknowledgeTimeline" class="checkbox-label required">
+                                    I acknowledge that DMCA takedown requests are typically processed within 24-48 hours, and I understand that this timeframe may vary depending on the volume of requests and the complexity of the matter.
+                                </label>
+                            </div>
+                            <div class="error-message" id="acknowledgeTimelineError">
+                                <i class="fas fa-exclamation-circle"></i>
+                                You must confirm this statement
+                            </div>
+                        </div>
+
+                        <!-- Signature Section -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-signature"></i>
+                                Electronic Signature
+                            </h2>
+
+                            <div class="form-group">
+                                <label for="signature" class="required">
+                                    <i class="fas fa-pen label-icon"></i>
+                                    Electronic Signature
+                                </label>
+                                <input type="text" id="signature" name="signature" class="form-control" placeholder="Type your full name to sign this request" required>
+                                <div class="error-message" id="signatureError">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    Please provide your electronic signature
+                                </div>
+                                <div class="note">
+                                    <i class="fas fa-info-circle"></i>
+                                    By typing your name, you are providing an electronic signature that is legally binding under the U.S. ESIGN Act and other applicable laws.
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-submit" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Submit DMCA Request</span>
+                        </button>
+
+                        <div class="success-message" id="successMessage">
+                            <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                            <strong>Your DMCA request has been submitted successfully!</strong><br>
+                            We will review it within 24-48 hours and take appropriate action. You will receive a confirmation email shortly.
+                        </div>
+                    </form>
+
+                    <div class="legal-text">
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-color);">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Important Legal Notice
+                        </h4>
+                        <p><strong>Digital Millennium Copyright Act (DMCA) Compliance:</strong> This form is exclusively for submitting valid DMCA takedown notices. The information provided must be accurate and truthful. Knowingly submitting false information may result in civil and criminal penalties.</p>
+                        <p><strong>Processing Time:</strong> We will review your request and respond within the timeframe required by law (typically 24-48 hours for initial review).</p>
+                        <p><strong>Counter-Notification:</strong> If you believe your content was removed in error, you may submit a counter-notification within 10 business days.</p>
+                        <p><strong>Contact:</strong> For questions about this process, please contact our designated DMCA agent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div class="thank-you-modal" id="thankYouModal">
+        <div class="thank-you-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2 class="thank-you-title">Thank You!</h2>
+            <p class="thank-you-message">
+                Your DMCA request has been successfully submitted. Our team will review it within 24-48 hours and take appropriate action. You will receive a confirmation email shortly.
+            </p>
+            <div class="redirect-timer">
+                <div class="timer-spinner"></div>
+                <span>Redirecting in <span id="countdown">3</span> seconds...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="toast-icon fas"></i>
+        <div class="toast-message">
+            <div class="toast-title"></div>
+            <div class="toast-text"></div>
+        </div>
+    </div>
+
+    <!-- Movie Request Modal -->
+    <div class="modal" id="movieRequestModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-film"></i>
+                    Movie Request
+                </h2>
+                <button class="close-modal" onclick="closeModal('movieRequestModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="movie-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="movie-request">
+                    <div style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </div>
+                    <div class="form-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-info-circle"></i>
+                            Request Details
+                        </h2>
+                        <div class="form-group">
+                            <label for="movieTitle" class="required">
+                                <i class="fas fa-film label-icon"></i>
+                                Movie Title
+                            </label>
+                            <input type="text" id="movieTitle" name="movieTitle" class="form-control" placeholder="Enter the movie title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="movieYear">
+                                <i class="fas fa-calendar label-icon"></i>
+                                Release Year (if known)
+                            </label>
+                            <input type="number" id="movieYear" name="movieYear" class="form-control" placeholder="e.g., 2023">
+                        </div>
+                        <div class="form-group">
+                            <label for="movieReason">
+                                <i class="fas fa-comment label-icon"></i>
+                                Why do you want this movie?
+                            </label>
+                            <textarea id="movieReason" name="movieReason" class="form-control" placeholder="Tell us why you'd like to see this movie on our platform"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-user"></i>
+                            Your Information
+                        </h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="requesterName" class="required">
+                                    <i class="fas fa-user label-icon"></i>
+                                    Name
+                                </label>
+                                <input type="text" id="requesterName" name="requesterName" class="form-control" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="requesterEmail" class="required">
+                                    <i class="fas fa-envelope label-icon"></i>
+                                    Email
+                                </label>
+                                <input type="email" id="requesterEmail" name="requesterEmail" class="form-control" placeholder="your.email@example.com" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Submit Request</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Issue Modal -->
+    <div class="modal" id="reportIssueModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Report an Issue
+                </h2>
+                <button class="close-modal" onclick="closeModal('reportIssueModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="report-issue" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="report-issue">
+                    <div style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </div>
+                    <div class="form-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-bug"></i>
+                            Issue Details
+                        </h2>
+                        <div class="form-group">
+                            <label for="issueType" class="required">
+                                <i class="fas fa-list label-icon"></i>
+                                Issue Type
+                            </label>
+                            <select id="issueType" name="issueType" class="form-control" required>
+                                <option value="">Select issue type</option>
+                                <option value="broken-link">Broken Link</option>
+                                <option value="video-quality">Video Quality Issue</option>
+                                <option value="audio-problem">Audio Problem</option>
+                                <option value="subtitles">Subtitle Issue</option>
+                                <option value="loading-error">Loading Error</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="issueUrl" class="required">
+                                <i class="fas fa-link label-icon"></i>
+                                Page URL
+                            </label>
+                            <input type="url" id="issueUrl" name="issueUrl" class="form-control" placeholder="https://..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="issueDescription" class="required">
+                                <i class="fas fa-comment label-icon"></i>
+                                Description
+                            </label>
+                            <textarea id="issueDescription" name="issueDescription" class="form-control" placeholder="Please describe the issue in detail" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-user"></i>
+                            Contact Information
+                        </h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reporterName">
+                                    <i class="fas fa-user label-icon"></i>
+                                    Name
+                                </label>
+                                <input type="text" id="reporterName" name="reporterName" class="form-control" placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="reporterEmail">
+                                    <i class="fas fa-envelope label-icon"></i>
+                                    Email
+                                </label>
+                                <input type="email" id="reporterEmail" name="reporterEmail" class="form-control" placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Report Issue</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Modal -->
+    <div class="modal" id="contactUsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-envelope"></i>
+                    Contact Us
+                </h2>
+                <button class="close-modal" onclick="closeModal('contactUsModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="contact-us" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact-us">
+                    <div style="display: none;">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </div>
+                    <div class="form-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-message"></i>
+                            Message Details
+                        </h2>
+                        <div class="form-group">
+                            <label for="contactSubject" class="required">
+                                <i class="fas fa-tag label-icon"></i>
+                                Subject
+                            </label>
+                            <input type="text" id="contactSubject" name="contactSubject" class="form-control" placeholder="What's this about?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage" class="required">
+                                <i class="fas fa-comment label-icon"></i>
+                                Message
+                            </label>
+                            <textarea id="contactMessage" name="contactMessage" class="form-control" placeholder="Please enter your message" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-user"></i>
+                            Your Information
+                        </h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName" class="required">
+                                    <i class="fas fa-user label-icon"></i>
+                                    Name
+                                </label>
+                                <input type="text" id="contactName" name="contactName" class="form-control" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail" class="required">
+                                    <i class="fas fa-envelope label-icon"></i>
+                                    Email
+                                </label>
+                                <input type="email" id="contactEmail" name="contactEmail" class="form-control" placeholder="your.email@example.com" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Modal -->
+    <div class="modal" id="faqModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-question-circle"></i>
+                    FAQ / Help Center
+                </h2>
+                <button class="close-modal" onclick="closeModal('faqModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="faq-content">
+                    <div class="faq-item">
+                        <h3><i class="fas fa-play-circle"></i> How do I watch movies?</h3>
+                        <p>Browse our collection, click on any movie, and press play. Make sure you have a stable internet connection for the best experience.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><i class="fas fa-volume-up"></i> Why is there no sound?</h3>
+                        <p>Check your device volume and browser settings. If the issue persists, try refreshing the page or clearing your browser cache.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><i class="fas fa-closed-captioning"></i> How do I enable subtitles?</h3>
+                        <p>Click the CC button on the video player to toggle subtitles on or off. We support multiple languages where available.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><i class="fas fa-shield-alt"></i> How do I report copyright issues?</h3>
+                        <p>Use our DMCA takedown request form. We process all valid requests within 24-48 hours.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><i class="fas fa-film"></i> Can I request movies?</h3>
+                        <p>Yes! Use the Movie Request form in our footer to suggest movies you'd like to see added to our collection.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><i class="fas fa-exclamation-triangle"></i> What if I find a broken link?</h3>
+                        <p>Report it using the Report Issue form. Include the URL and describe the problem, and we'll fix it promptly.</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="color: #6b7280;">Still need help? <button class="btn" onclick="closeModal('faqModal'); openContactUsModal();">Contact Us</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DMCA Notice Modal -->
+    <div class="modal" id="dmcaNoticeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-shield-alt"></i>
+                    DMCA Notice
+                </h2>
+                <button class="close-modal" onclick="closeModal('dmcaNoticeModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="dmca-notice-content">
+                    <h3>What is DMCA?</h3>
+                    <p>The Digital Millennium Copyright Act (DMCA) is a United States copyright law that provides a process for a copyright holder to issue a takedown notice to an online service provider to remove or disable access to allegedly infringing material.</p>
+
+                    <h3>Our DMCA Policy</h3>
+                    <p>We respect the intellectual property rights of others and respond to clear notices of alleged copyright infringement. If you believe that your work has been copied in a way that constitutes copyright infringement, please provide our designated agent with the following information:</p>
+
+                    <ul>
+                        <li>A physical or electronic signature of the copyright owner or authorized representative</li>
+                        <li>Identification of the copyrighted work claimed to have been infringed</li>
+                        <li>Identification of the material that is claimed to be infringing</li>
+                        <li>Your contact information</li>
+                        <li>A statement that you have a good faith belief that use of the material is not authorized</li>
+                        <li>A statement that the information is accurate and that you are authorized to act</li>
+                    </ul>
+
+                    <h3>Processing Time</h3>
+                    <p>We will review your request and respond within the timeframe required by law (typically 24-48 hours for initial review).</p>
+
+                    <h3>Counter-Notification</h3>
+                    <p>If you believe your content was removed in error, you may submit a counter-notification within 10 business days.</p>
+
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 10px; margin-top: 2rem;">
+                        <p style="margin: 0; font-weight: 600; color: var(--primary-color);">
+                            <i class="fas fa-envelope"></i>
+                            Designated DMCA Agent: dmca@moviewebsite.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: linear-gradient(135deg, #1f2937 0%, #374151 100%); color: white; padding: 3rem 0 2rem; margin-top: 4rem;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.25rem;">Quick Actions</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem;">
+                            <button class="footer-link" onclick="openMovieRequestModal()">
+                                <i class="fas fa-film"></i> Movie Request
+                            </button>
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <button class="footer-link" onclick="openReportIssueModal()">
+                                <i class="fas fa-exclamation-triangle"></i> Report Issue
+                            </button>
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <button class="footer-link" onclick="openRemovalRequestModal()">
+                                <i class="fas fa-gavel"></i> Removal Request
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.25rem;">Support</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem;">
+                            <button class="footer-link" onclick="openContactUsModal()">
+                                <i class="fas fa-envelope"></i> Contact Us
+                            </button>
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <button class="footer-link" onclick="openFAQModal()">
+                                <i class="fas fa-question-circle"></i> FAQ / Help Center
+                            </button>
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <button class="footer-link" onclick="openDMCANoticeModal()">
+                                <i class="fas fa-shield-alt"></i> DMCA Notice
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; text-align: center;">
+                <p style="color: #9ca3af; font-size: 0.9rem;">
+                    &copy; 2024 Movie Website. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--danger);"></i> for content creators.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/js/intlTelInput.min.js"></script>
+    <script>
+        // Modal functions
+        function openMovieRequestModal() {
+            document.getElementById('movieRequestModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openReportIssueModal() {
+            document.getElementById('reportIssueModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openRemovalRequestModal() {
+            document.getElementById('dmcaModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openContactUsModal() {
+            document.getElementById('contactUsModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openFAQModal() {
+            document.getElementById('faqModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openDMCANoticeModal() {
+            document.getElementById('dmcaNoticeModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal functionality
+            const modal = document.getElementById('dmcaModal');
+            const openModalBtn = document.getElementById('openModalBtn');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+
+            openModalBtn.addEventListener('click', () => {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // International Phone Input
+            const phoneInput = document.getElementById('phone');
+            const iti = window.intlTelInput(phoneInput, {
+                initialCountry: 'auto',
+                geoIpLookup: function(callback) {
+                    fetch('https://ipapi.co/json')
+                        .then(res => res.json())
+                        .then(data => callback(data.country_code))
+                        .catch(() => callback('us'));
+                },
+                utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.2.1/js/utils.js'
+            });
+
+            // Update phone input name to include full international number
+            phoneInput.addEventListener('blur', function() {
+                if (phoneInput.value) {
+                    const fullNumber = iti.getNumber();
+                    phoneInput.setAttribute('data-full-number', fullNumber);
+                }
+            });
+
+            const form = document.getElementById('dmcaForm');
+            const linkYes = document.getElementById('linkYes');
+            const linkNo = document.getElementById('linkNo');
+            const realMovieLinkContainer = document.getElementById('realMovieLinkContainer');
+
+            // Toggle real movie link field based on radio selection
+            linkYes.addEventListener('change', function() {
+                if (this.checked) {
+                    realMovieLinkContainer.style.display = 'block';
+                }
+            });
+
+            linkNo.addEventListener('change', function() {
+                if (this.checked) {
+                    realMovieLinkContainer.style.display = 'none';
+                }
+            });
+
+            // Toast notification system
+            function showToast(title, text, type = 'success') {
+                const toast = document.getElementById('toast');
+                const icon = toast.querySelector('.toast-icon');
+                const titleEl = toast.querySelector('.toast-title');
+                const textEl = toast.querySelector('.toast-text');
+
+                toast.className = `toast ${type}`;
+                icon.className = `toast-icon fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}`;
+                titleEl.textContent = title;
+                textEl.textContent = text;
+
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 5000);
+            }
+
+            // Form validation
+            form.addEventListener('submit', function(e) {
+                let isValid = true;
+
+                // Reset error messages
+                const errorMessages = document.querySelectorAll('.error-message');
+                errorMessages.forEach(msg => msg.style.display = 'none');
+
+                // Remove error classes
+                const formControls = document.querySelectorAll('.form-control');
+                formControls.forEach(control => control.classList.remove('error'));
+
+                // Check required fields
+                const requiredFields = form.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add('error');
+                        const errorId = field.id + 'Error';
+                        const errorElement = document.getElementById(errorId);
+                        if (errorElement) {
+                            errorElement.style.display = 'flex';
+                        }
+                    }
+                });
+
+                // Check checkboxes
+                const checkboxes = form.querySelectorAll('input[type="checkbox"][required]');
+                checkboxes.forEach(checkbox => {
+                    if (!checkbox.checked) {
+                        isValid = false;
+                        const errorId = checkbox.id + 'Error';
+                        const errorElement = document.getElementById(errorId);
+                        if (errorElement) {
+                            errorElement.style.display = 'flex';
+                        }
+                    }
+                });
+
+                // Validate email format
+                const emailField = document.getElementById('email');
+                if (emailField.value && !isValidEmail(emailField.value)) {
+                    isValid = false;
+                    emailField.classList.add('error');
+                    const errorElement = document.getElementById('emailError');
+                    errorElement.textContent = 'Please enter a valid email address';
+                    errorElement.style.display = 'flex';
+                }
+
+                // Validate phone if provided
+                if (phoneInput.value && !iti.isValidNumber()) {
+                    isValid = false;
+                    phoneInput.classList.add('error');
+                    showToast('Invalid Phone Number', 'Please enter a valid international phone number', 'error');
+                }
+
+                if (!isValid) {
+                    showToast('Validation Error', 'Please fill in all required fields correctly', 'error');
+                    e.preventDefault();
+                    return false;
+                }
+
+                // Show loading state
+                const submitBtn = document.getElementById('submitBtn');
+                const originalHTML = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="loading"></span> Submitting...';
+                submitBtn.disabled = true;
+
+                // Let Netlify handle the form submission
+                // The form will submit normally to Netlify
+                // We don't prevent default here
+
+                // Show success message after a delay (Netlify will redirect or show its own success)
+                setTimeout(() => {
+                    // Show thank you modal
+                    const thankYouModal = document.getElementById('thankYouModal');
+                    thankYouModal.classList.add('show');
+
+                    // Countdown timer
+                    let countdown = 3;
+                    const countdownEl = document.getElementById('countdown');
+                    const timer = setInterval(() => {
+                        countdown--;
+                        countdownEl.textContent = countdown;
+                        if (countdown <= 0) {
+                            clearInterval(timer);
+                            // Close modal and reset form
+                            thankYouModal.classList.remove('show');
+                            modal.classList.remove('show');
+                            document.body.style.overflow = '';
+                            form.reset();
+                            realMovieLinkContainer.style.display = 'none';
+                            submitBtn.innerHTML = originalHTML;
+                            submitBtn.disabled = false;
+                        }
+                    }, 1000);
+                }, 2000);
+            });
+
+            // Email validation function
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            // Real-time validation for better UX
+            document.getElementById('fullName').addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                    document.getElementById('fullNameError').style.display = 'none';
+                }
+            });
+
+            document.getElementById('email').addEventListener('input', function() {
+                if (isValidEmail(this.value)) {
+                    this.classList.remove('error');
+                    document.getElementById('emailError').style.display = 'none';
+                }
+            });
+
+            document.getElementById('copyrightOwner').addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                    document.getElementById('copyrightOwnerError').style.display = 'none';
+                }
+            });
+
+            document.getElementById('copyrightedWork').addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                    document.getElementById('copyrightedWorkError').style.display = 'none';
+                }
+            });
+
+            document.getElementById('originalLocation').addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                    document.getElementById('originalLocationError').style.display = 'none';
+                }
+            });
+
+            document.getElementById('infringingUrls').addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                    document.getElementById('infringingUrlsError').style.display = 'none';
+                }
+            });
+
+            document.getElementById('signature').addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                    document.getElementById('signatureError').style.display = 'none';
+                }
+            });
+
+            // Checkbox validation
+            document.querySelectorAll('input[type="checkbox"][required]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        const errorId = this.id + 'Error';
+                        const errorElement = document.getElementById(errorId);
+                        if (errorElement) {
+                            errorElement.style.display = 'none';
+                        }
+                    }
+                });
+            });
+
+            // Real-time validation for acknowledgeTimeline checkbox
+            document.getElementById('acknowledgeTimeline').addEventListener('change', function() {
+                if (this.checked) {
+                    document.getElementById('acknowledgeTimelineError').style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
